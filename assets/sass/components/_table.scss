@@ -81,14 +81,14 @@
 		
 		&.alt2 {
 			border-collapse: separate;
-			vertical-align : middle;
-			text-align:center;
 			tbody {
 				tr {
 					td {
 						border: solid _size(border-width);
 						border-left-width: 0;
 						border-top-width: 0;
+						vertical-align : middle;
+						text-align:center;
 
 						&:first-child {
 							border-left-width: _size(border-width);
