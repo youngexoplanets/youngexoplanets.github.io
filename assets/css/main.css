@@ -2637,7 +2637,6 @@ a.icon.style2:active:before {
 .image img {
   display: block;
   border-radius: 4px;
-  background-color: #000000;
 }
 
 .image.left, .image.right {
