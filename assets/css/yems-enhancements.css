@@ -1,0 +1,915 @@
+/* YEMS visual and accessibility enhancements — July 2026 */
+:root { --yems-amber: #ffb74d; --yems-deep: #07131f; }
+
+.yems-language-switch {
+  display: inline-flex; align-items: center; gap: .55rem; margin: 0 0 1.25rem;
+  padding: .38rem .72rem; border: 1px solid rgba(255,255,255,.45); border-radius: 999px;
+  background: rgba(3,12,22,.58); backdrop-filter: blur(8px); font-size: .78rem;
+  letter-spacing: .12em; position: relative; z-index: 3;
+}
+.yems-language-switch a { border: 0; color: #fff; text-decoration: none; }
+.yems-language-switch a:hover { color: var(--yems-amber); }
+.yems-highlight-link { color: var(--yems-amber) !important; text-decoration: none; font-weight: 600; }
+.yems-highlight-link:hover { color: #ffd08a !important; }
+
+.banner.yems-hero { background: var(--yems-deep); }
+.banner.yems-hero > .content {
+  position: relative;
+  z-index: 2;
+  width: 44rem;
+  max-width: min(100%, 44rem);
+  margin-bottom: 0;
+  padding: 2.35rem 2.6rem;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 1rem;
+  background:
+    linear-gradient(135deg, rgba(6,18,34,.68) 0%, rgba(63,12,35,.44) 44%, rgba(9,25,47,.58) 100%),
+    radial-gradient(circle at 12% 12%, rgba(255,255,255,.11), transparent 30%);
+  box-shadow: 0 1.65rem 4rem rgba(0,0,0,.34);
+  backdrop-filter: blur(10px) saturate(118%);
+}
+.banner.yems-hero > .content h2 { text-shadow: 0 3px 18px rgba(0,0,0,.5); line-height: 1.1; }
+.banner.yems-hero > .content .major { max-width: 42rem; }
+.banner.yems-hero > .image img { object-position: 62% center; }
+/* The style5 banner image is already absolutely positioned by main.css. */
+.banner.yems-hero > .image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(9,8,15,.54) 0%, rgba(9,8,15,.16) 48%, rgba(9,8,15,.10) 100%),
+    linear-gradient(0deg, rgba(10,7,14,.22), rgba(10,7,14,.08) 45%, rgba(10,7,14,.22));
+}
+.banner.yems-hero .actions.fit { width: 100%; margin-left: 0; }
+.banner.yems-hero .actions.fit > li {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+  padding-left: 0;
+}
+.banner.yems-hero .actions.fit > li .button {
+  width: 100%;
+  margin: 0;
+  background: rgba(5,13,23,.26);
+  border-color: rgba(255,255,255,.5);
+  backdrop-filter: blur(5px);
+}
+
+.yems-section-bg { position: relative; isolation: isolate; background-attachment: fixed; background-size: cover; background-position: center; }
+.yems-section-bg::before { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(4,13,23,.82); }
+.yems-section-bg > .inner, .yems-section-bg > .gallery { position: relative; z-index: 1; }
+.yems-outreach-bg { background-image: url("../../images/outreach/Astrodialogos-4.jpg"); background-position: center 35%; }
+.yems-outreach-bg::before { background: linear-gradient(180deg, rgba(5,15,26,.91), rgba(5,15,26,.72) 45%, rgba(5,15,26,.92)); }
+.yems-section-bg .items > section { background: rgba(4,13,23,.62); border-radius: .35rem; backdrop-filter: blur(5px); }
+.yems-section-bg .gallery { background: rgba(2,8,14,.36); }
+
+/* Homepage news refresh */
+.yems-news-grid .items.style3 {
+  gap: 1.3rem;
+}
+.yems-news-grid .items.style3 > section {
+  border-radius: .95rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(11,18,29,.7), rgba(7,12,21,.92));
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow: 0 .85rem 2.1rem rgba(0,0,0,.16);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.yems-news-grid .items.style3 > section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 1.15rem 2.6rem rgba(0,0,0,.24);
+  border-color: rgba(255,255,255,.16);
+}
+.yems-news-grid .items.style3 > section > span.image.fit,
+.yems-news-grid .items.style3 > section > a {
+  display: block;
+  height: 100%;
+  margin: 0;
+}
+.yems-news-grid .items.style3 > section a {
+  color: inherit;
+  text-decoration: none;
+}
+.yems-news-grid .items.style3 > section img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  margin: 0 0 1.1rem;
+  transition: transform .35s ease;
+}
+.yems-news-grid .items.style3 > section:hover img {
+  transform: scale(1.02);
+}
+.yems-news-grid .items.style3 > section h5.highlighted {
+  margin: 0 1.15rem .6rem;
+  color: rgba(255,255,255,.72);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: none;
+}
+.yems-news-grid .items.style3 > section p {
+  margin: 0;
+  padding: 0 1.15rem 1.35rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255,255,255,.95);
+}
+.yems-more-news-note {
+  margin-top: 1.4rem;
+  text-align: center;
+  font-size: .95rem;
+}
+.yems-more-news-note a {
+  color: var(--yems-amber) !important;
+  border-bottom: 0;
+  font-weight: 600;
+}
+.yems-more-news-note a:hover {
+  color: #ffd08a !important;
+}
+.team-placeholder {
+  display:flex; align-items:center; justify-content:center; aspect-ratio:1/1; width:100%;
+  background:linear-gradient(145deg,#183149,#0a1723); color:#fff; font-size:2.2rem; font-weight:700;
+  letter-spacing:.08em;
+}
+
+@media screen and (max-width: 980px) {
+  .yems-section-bg { background-attachment: scroll; }
+}
+@media screen and (max-width: 736px) {
+  .banner.yems-hero > .content { padding: 1.5rem 1.3rem; }
+  .banner.yems-hero > .content h2 { font-size: 2rem; }
+  .banner.yems-hero > .image::after { background: linear-gradient(0deg, rgba(5,12,19,.46), rgba(5,12,19,.08)); }
+  .banner.yems-hero .actions.fit > li { grid-template-columns: 1fr; gap: .55rem; }
+  .yems-language-switch { margin-bottom: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .yems-section-bg { background-attachment: scroll; }
+}
+
+
+/* Simple subpage layout --------------------------------------------------- */
+.yems-subpage-hero {
+  min-height: 32rem;
+}
+.yems-subpage-hero > .content {
+  position: relative;
+  z-index: 2;
+  width: 38rem;
+  max-width: 100%;
+  padding: 2.25rem 2.5rem;
+  background: linear-gradient(140deg, rgba(5,18,31,.82), rgba(15,31,47,.64));
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: .8rem;
+  backdrop-filter: blur(8px);
+}
+.yems-subpage-hero > .image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(3,10,18,.42), rgba(3,10,18,.08));
+  pointer-events: none;
+}
+.yems-page-nav {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  font-size: .82rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.yems-page-nav a {
+  color: rgba(255,255,255,.9);
+  border-bottom: 1px solid rgba(255,255,255,.32);
+}
+.yems-page-nav a:hover {
+  color: var(--yems-amber);
+  border-bottom-color: var(--yems-amber);
+}
+.yems-subpage .wrapper > .inner {
+  max-width: 76rem;
+}
+
+/* Team page --------------------------------------------------------------- */
+.yems-team-page .wrapper .content > h3 {
+  margin-top: 3.25rem;
+}
+.yems-team-page .wrapper .content > h3:first-child {
+  margin-top: 0;
+}
+.yems-team-page .gallery article img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.yems-team-page .gallery article .caption h2 {
+  font-size: 1.15rem;
+  margin-bottom: .35rem;
+}
+.yems-team-page .gallery article .caption p {
+  margin-bottom: .15rem;
+}
+.yems-team-page blockquote {
+  border-left: 3px solid var(--yems-amber);
+  padding-left: 1.25rem;
+}
+
+/* Resources page ---------------------------------------------------------- */
+.yems-resource-section {
+  min-height: 0 !important;
+}
+.yems-resource-section > .content {
+  padding-top: 4.5rem !important;
+  padding-bottom: 4.5rem !important;
+}
+.yems-resource-section > .image {
+  min-height: 25rem;
+}
+.yems-resource-section .actions {
+  margin-bottom: 1.25rem;
+}
+.yems-resource-section .button {
+  min-width: 13rem;
+}
+
+/* News subpage ------------------------------------------------------------ */
+.yems-news-page #news > .inner {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+@media screen and (max-width: 736px) {
+  .yems-subpage-hero {
+    min-height: 26rem;
+  }
+  .yems-subpage-hero > .content {
+    padding: 1.5rem 1.35rem;
+  }
+  .yems-resource-section > .content {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .yems-resource-section > .image {
+    min-height: 18rem;
+  }
+}
+
+
+/* Final visual tweaks ----------------------------------------------------- */
+/* Restore the simpler original-style subpage titles */
+.yems-subpage-hero > .content {
+  width: 42rem;
+  max-width: 100%;
+  padding: 0;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+.yems-subpage-hero > .content h1,
+.yems-subpage-hero > .content h2,
+.yems-subpage-hero > .content h4,
+.yems-subpage-hero > .content p {
+  text-shadow: 0 2px 16px rgba(0,0,0,.45);
+}
+.yems-subpage-hero > .image::after {
+  background: linear-gradient(90deg, rgba(3,10,18,.50), rgba(3,10,18,.14));
+}
+
+/* Resource page images: prevent circular stretching */
+.yems-resource-section {
+  align-items: center;
+}
+.yems-resource-section > .image {
+  width: 28rem;
+  max-width: 40%;
+  min-width: 18rem;
+  height: auto;
+  min-height: 0;
+  margin-top: 0;
+  border-radius: 0;
+}
+.yems-resource-section > .image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 28rem;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+/* About YEMS section on homepage */
+#aboutus.yems-about-section {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    linear-gradient(135deg, rgba(6,15,28,.78) 0%, rgba(15,32,51,.58) 50%, rgba(7,18,31,.80) 100%),
+    url("https://cdn.eso.org/images/publicationjpg/potw1119a.jpg");
+  background-size: cover;
+  background-position: center center;
+}
+#aboutus.yems-about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(4,11,19,.12), rgba(4,11,19,.12));
+  pointer-events: none;
+}
+#aboutus.yems-about-section > .content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 54rem;
+  padding-right: 2rem;
+}
+#aboutus.yems-about-section .actions {
+  margin-top: 1.25rem;
+}
+#aboutus.yems-about-section .button {
+  background: rgba(6,15,28,.28);
+  backdrop-filter: blur(4px);
+}
+#aboutus.yems-about-section .yems-photo-credit {
+  margin-top: 1.5rem;
+  font-size: .72rem;
+  line-height: 1.4;
+  color: rgba(255,255,255,.72);
+}
+
+@media screen and (max-width: 980px) {
+  .yems-resource-section > .image {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+  .yems-resource-section > .image img {
+    max-height: none;
+  }
+  #aboutus.yems-about-section > .content {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .yems-subpage-hero > .content {
+    padding: 0;
+  }
+  #aboutus.yems-about-section {
+    background-position: center center;
+  }
+}
+
+
+/* Important visual edits -------------------------------------------------- */
+/* About section: logo + top-dark to bottom-transparent overlay */
+#aboutus.yems-about-section {
+  background-image:
+    linear-gradient(180deg, rgba(1,4,8,.92) 0%, rgba(4,11,19,.74) 28%, rgba(6,15,28,.32) 72%, rgba(6,15,28,.08) 100%),
+    url("https://cdn.eso.org/images/publicationjpg/potw1119a.jpg");
+}
+#aboutus.yems-about-section::before {
+  background: none;
+}
+#aboutus.yems-about-section > .content {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  grid-template-areas:
+    "header logo"
+    "text logo"
+    "actions logo"
+    "credit credit";
+  column-gap: 2rem;
+  row-gap: .4rem;
+  align-items: start;
+}
+#aboutus.yems-about-section > .content > header {
+  grid-area: header;
+}
+#aboutus.yems-about-section > .content > p:not(.yems-photo-credit) {
+  grid-column: 1;
+}
+#aboutus.yems-about-section > .content > .actions {
+  grid-area: actions;
+}
+#aboutus.yems-about-section .yems-about-brand {
+  grid-area: logo;
+  align-self: center;
+  justify-self: end;
+  width: 9rem;
+  max-width: 22vw;
+  margin-top: .4rem;
+}
+#aboutus.yems-about-section .yems-about-brand img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,.35));
+}
+#aboutus.yems-about-section .yems-photo-credit {
+  grid-area: credit;
+}
+
+/* Darker news section */
+#news.yems-news-grid {
+  position: relative;
+  background: linear-gradient(180deg, #060b12 0%, #0b1520 48%, #0b1118 100%);
+}
+#news.yems-news-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top center, rgba(255,255,255,.04), transparent 42%);
+  pointer-events: none;
+}
+#news.yems-news-grid > .inner {
+  position: relative;
+  z-index: 1;
+}
+#news.yems-news-grid .items.style3 > section {
+  background: linear-gradient(180deg, rgba(13,22,34,.92), rgba(8,14,23,.98));
+  border-color: rgba(255,255,255,.05);
+  box-shadow: 0 1rem 2.4rem rgba(0,0,0,.22);
+}
+#news.yems-news-grid .items.style3 > section h5.highlighted {
+  color: rgba(255,255,255,.64);
+}
+#news.yems-news-grid .items.style3 > section p {
+  color: rgba(255,255,255,.96);
+}
+
+@media screen and (max-width: 980px) {
+  #aboutus.yems-about-section > .content {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "logo"
+      "text"
+      "actions"
+      "credit";
+  }
+  #aboutus.yems-about-section .yems-about-brand {
+    justify-self: start;
+    width: 7.25rem;
+    max-width: 9rem;
+    margin: .25rem 0 .5rem;
+  }
+}
+
+
+/* Branding and inferno palette refinements ------------------------------- */
+/* Stronger YEMS branding in the information section */
+#aboutus.yems-about-section {
+  padding-top: 4.1rem;
+  padding-bottom: 3.2rem;
+}
+#aboutus.yems-about-section .yems-about-brand {
+  width: 14rem;
+  max-width: 30vw;
+  margin-top: 0;
+}
+#aboutus.yems-about-section .yems-about-brand img {
+  filter: drop-shadow(0 10px 28px rgba(0,0,0,.42));
+}
+#aboutus.yems-about-section .yems-mission-highlight {
+  display: inline;
+  color: #fff;
+  font-weight: 700;
+  background: linear-gradient(90deg, rgba(188,55,84,.34), rgba(237,105,37,.28));
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: .08em .22em;
+  border-radius: .18rem;
+}
+#aboutus.yems-about-section .yems-photo-credit {
+  position: absolute;
+  right: 1.2rem;
+  bottom: .55rem;
+  margin: 0;
+  max-width: 32rem;
+  text-align: right;
+  font-size: .66rem;
+  line-height: 1.25;
+  color: rgba(255,255,255,.62);
+}
+
+/* Inferno-inspired news cards: purple-black through ember orange */
+#news.yems-news-grid {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(92,18,110,.16), transparent 38%),
+    linear-gradient(180deg, #08070d 0%, #100b18 52%, #0a090d 100%);
+}
+#news.yems-news-grid .items.style3 > section {
+  background:
+    linear-gradient(145deg, rgba(58,15,72,.96) 0%, rgba(31,14,42,.97) 52%, rgba(60,24,15,.97) 100%);
+  border: 1px solid rgba(237,105,37,.22);
+  box-shadow: 0 1rem 2.5rem rgba(0,0,0,.3);
+}
+#news.yems-news-grid .items.style3 > section:hover {
+  border-color: rgba(252,165,10,.52);
+  box-shadow: 0 1.25rem 3rem rgba(0,0,0,.38);
+}
+#news.yems-news-grid .items.style3 > section h5.highlighted {
+  color: #f6a04d;
+}
+#news.yems-news-grid .items.style3 > section p {
+  color: #fff7ef;
+}
+
+/* Recursos hero: keep the overlay inside the circular image */
+.yems-resources-page .yems-subpage-hero > .image {
+  overflow: hidden;
+}
+.yems-resources-page .yems-subpage-hero > .image::after {
+  border-radius: inherit;
+}
+
+/* Inferno-inspired outreach buttons */
+#outreach .actions li:first-child .button {
+  background: linear-gradient(135deg, #5c126e, #bc3754);
+  border-color: transparent;
+  color: #fff !important;
+  box-shadow: 0 .7rem 1.5rem rgba(40,8,49,.25);
+}
+#outreach .actions li:last-child .button {
+  background: linear-gradient(135deg, #ed6925, #fca50a);
+  border-color: transparent;
+  color: #1b0b05 !important;
+  box-shadow: 0 .7rem 1.5rem rgba(85,37,5,.24);
+}
+#outreach .actions .button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+}
+
+@media screen and (max-width: 980px) {
+  #aboutus.yems-about-section {
+    padding-top: 3.4rem;
+    padding-bottom: 3rem;
+  }
+  #aboutus.yems-about-section .yems-about-brand {
+    width: 10.5rem;
+    max-width: 52vw;
+  }
+  #aboutus.yems-about-section .yems-photo-credit {
+    position: static;
+    max-width: none;
+    margin-top: .75rem;
+    text-align: left;
+  }
+}
+
+
+/* Partner institutions ---------------------------------------------------- */
+.yems-partners-section {
+  background: linear-gradient(180deg, #080d13 0%, #05080d 100%);
+}
+.yems-partners-section > .inner:first-child {
+  padding-bottom: 1rem;
+}
+.yems-partners-section > .inner:first-child > p {
+  max-width: 62rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.yems-partners-section h3 {
+  margin-top: 1.5rem;
+  margin-bottom: .4rem;
+  font-size: 1rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.72);
+}
+.yems-funder-logo {
+  margin: 1rem auto .5rem;
+}
+.yems-funder-logo a {
+  display: inline-block;
+  border-bottom: 0;
+}
+.yems-funder-logo img {
+  display: block;
+  width: 8.5rem;
+  max-height: 4.5rem;
+  object-fit: contain;
+}
+.yems-partner-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: .85rem;
+  align-items: center;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: .35rem 2rem 2.1rem;
+}
+.yems-partner-grid a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 5.5rem;
+  padding: .3rem;
+  border-bottom: 0;
+  opacity: .82;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.yems-partner-grid a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+.yems-partner-grid img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 980px) {
+  .yems-partner-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 48rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .yems-partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .55rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .yems-partner-grid a {
+    height: 4.8rem;
+  }
+}
+
+
+/* Partner layout and unified button palette ------------------------------ */
+:root {
+  --yems-button-accent: #a85d62;
+  --yems-button-accent-hover: #c7775d;
+  --yems-button-accent-soft: #e6a277;
+  --yems-button-ink: #5d3145;
+}
+
+/* Milenio remains the principal funder and receives slightly more weight. */
+.yems-funder-logo {
+  margin: 1.25rem auto .8rem;
+}
+.yems-funder-logo img {
+  width: 13.5rem;
+  max-width: 46vw;
+  max-height: 7.3rem;
+}
+
+/* Use the same heading hierarchy as the other homepage sections. */
+.yems-partner-heading {
+  margin-top: 2.25rem;
+  margin-bottom: .65rem;
+}
+.yems-partner-heading h2 {
+  margin-bottom: 0;
+}
+.yems-partners-section h3 {
+  margin: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: none;
+  color: inherit;
+}
+
+/* CIRAS and Planetario are the first adjacent pair in the grid. */
+.yems-partner-grid {
+  grid-auto-flow: row;
+}
+
+/* A restrained warm-plum palette for buttons across the static site. */
+#wrapper .button,
+#wrapper button,
+#wrapper input[type="submit"],
+#wrapper input[type="reset"],
+#wrapper input[type="button"] {
+  transition: background-color .2s ease, border-color .2s ease,
+              box-shadow .2s ease, color .2s ease, transform .2s ease;
+}
+
+#wrapper > :not(.invert) .button,
+#wrapper > :not(.invert) button,
+#wrapper > :not(.invert) input[type="submit"],
+#wrapper > :not(.invert) input[type="reset"],
+#wrapper > :not(.invert) input[type="button"] {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(93,49,69,.56);
+  color: var(--yems-button-ink) !important;
+}
+#wrapper > :not(.invert) .button:hover,
+#wrapper > :not(.invert) button:hover,
+#wrapper > :not(.invert) input[type="submit"]:hover,
+#wrapper > :not(.invert) input[type="reset"]:hover,
+#wrapper > :not(.invert) input[type="button"]:hover {
+  background: rgba(168,93,98,.08);
+  box-shadow: inset 0 0 0 1px var(--yems-button-accent);
+  color: var(--yems-button-accent) !important;
+}
+
+#wrapper > .invert .button,
+#wrapper > .invert button,
+#wrapper > .invert input[type="submit"],
+#wrapper > .invert input[type="reset"],
+#wrapper > .invert input[type="button"] {
+  background: rgba(15,18,28,.16);
+  box-shadow: inset 0 0 0 1px rgba(230,162,119,.68);
+  color: #ffffff !important;
+}
+#wrapper > .invert .button:hover,
+#wrapper > .invert button:hover,
+#wrapper > .invert input[type="submit"]:hover,
+#wrapper > .invert input[type="reset"]:hover,
+#wrapper > .invert input[type="button"]:hover {
+  background: rgba(168,93,98,.2);
+  box-shadow: inset 0 0 0 1px var(--yems-button-accent-soft);
+  color: #ffe0c6 !important;
+}
+
+#wrapper .button.primary,
+#wrapper button.primary,
+#wrapper input[type="submit"].primary,
+#wrapper input[type="reset"].primary,
+#wrapper input[type="button"].primary,
+#wrapper > .invert .button.primary,
+#wrapper > .invert button.primary,
+#wrapper > .invert input[type="submit"].primary,
+#wrapper > .invert input[type="reset"].primary,
+#wrapper > .invert input[type="button"].primary {
+  background: var(--yems-button-accent);
+  box-shadow: none;
+  color: #ffffff !important;
+}
+#wrapper .button.primary:hover,
+#wrapper button.primary:hover,
+#wrapper input[type="submit"].primary:hover,
+#wrapper input[type="reset"].primary:hover,
+#wrapper input[type="button"].primary:hover,
+#wrapper > .invert .button.primary:hover,
+#wrapper > .invert button.primary:hover,
+#wrapper > .invert input[type="submit"].primary:hover,
+#wrapper > .invert input[type="reset"].primary:hover,
+#wrapper > .invert input[type="button"].primary:hover {
+  background: var(--yems-button-accent-hover);
+  color: #ffffff !important;
+}
+
+/* Remove the stronger inferno treatment from the outreach buttons. */
+#outreach .actions li:first-child .button,
+#outreach .actions li:last-child .button {
+  background: rgba(168,93,98,.76);
+  border-color: transparent;
+  box-shadow: 0 .55rem 1.25rem rgba(18,10,17,.18);
+  color: #ffffff !important;
+}
+#outreach .actions .button:hover {
+  background: var(--yems-button-accent-hover);
+  box-shadow: 0 .7rem 1.45rem rgba(18,10,17,.24);
+  color: #ffffff !important;
+  filter: none;
+  transform: translateY(-2px);
+}
+
+/* Keep the front-page hero navigation subtle rather than solid. */
+.banner.yems-hero .actions.fit > li .button {
+  background: rgba(5,13,23,.26);
+  box-shadow: inset 0 0 0 1px rgba(230,162,119,.58);
+}
+.banner.yems-hero .actions.fit > li .button:hover {
+  background: rgba(168,93,98,.18);
+  box-shadow: inset 0 0 0 1px var(--yems-button-accent-soft);
+  color: #ffe0c6 !important;
+}
+
+@media screen and (max-width: 560px) {
+  .yems-funder-logo img {
+    width: 10.5rem;
+  }
+}
+
+
+/* Subpage navigation refinement ----------------------------------------- */
+.yems-subpage-hero {
+  position: relative;
+}
+.yems-subpage-hero .yems-page-nav {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin: 0;
+  padding: .42rem .72rem;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  background: rgba(3,10,18,.48);
+  backdrop-filter: blur(6px);
+  font-size: .72rem;
+  line-height: 1;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.yems-subpage-hero .yems-page-nav a {
+  color: rgba(255,255,255,.94);
+  border: 0;
+  text-decoration: none;
+}
+.yems-subpage-hero .yems-page-nav a:hover {
+  color: #e9b37c;
+  border: 0;
+}
+
+/* Astrodiálogos ambassadors --------------------------------------------- */
+.yems-ambassadors {
+  display: grid;
+  grid-template-columns: minmax(15rem, 24rem) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem 0 2rem;
+}
+.yems-ambassadors img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 30rem;
+  object-fit: cover;
+  object-position: center 35%;
+}
+.yems-ambassadors figcaption p {
+  margin-bottom: .55rem;
+}
+
+@media screen and (max-width: 736px) {
+  .yems-subpage-hero .yems-page-nav {
+    top: .75rem;
+    left: .75rem;
+    padding: .38rem .62rem;
+    font-size: .68rem;
+  }
+  .yems-ambassadors {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+
+/* Click-to-enlarge news images ------------------------------------------- */
+a.yems-image-zoom {
+  display: block;
+  border-bottom: 0;
+  cursor: zoom-in;
+}
+a.yems-image-zoom img {
+  cursor: zoom-in;
+  transition: opacity .18s ease;
+}
+a.yems-image-zoom:hover img {
+  opacity: .92;
+}
+
+
+/* Hoy et al. news contacts */
+.yems-news-contacts {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0,0,0,.12);
+}
+.yems-news-contacts p {
+  margin-bottom: 1rem;
+}
+.yems-news-contacts a {
+  overflow-wrap: anywhere;
+}
+
+
+/* Embargo-safe featured announcement */
+.yems-embargo-note {
+  display: inline-block;
+  cursor: default;
+}
+
+
+/* Embargoed Hoy et al. news cards: visible, but deliberately non-clickable. */
+.yems-news-grid .items.style3 > section.yems-embargo-card {
+  cursor: default;
+}
+.yems-news-grid .items.style3 > section.yems-embargo-card:hover {
+  transform: none;
+  box-shadow: 0 .85rem 2.1rem rgba(0,0,0,.16);
+  border-color: rgba(255,255,255,.06);
+}
+.yems-news-grid .items.style3 > section.yems-embargo-card:hover img {
+  transform: none;
+}
+.yems-embargo-card-content {
+  cursor: default;
+}
