@@ -891,25 +891,3 @@ a.yems-image-zoom:hover img {
 }
 
 
-/* Embargo-safe featured announcement */
-.yems-embargo-note {
-  display: inline-block;
-  cursor: default;
-}
-
-
-/* Embargoed Hoy et al. news cards: visible, but deliberately non-clickable. */
-.yems-news-grid .items.style3 > section.yems-embargo-card {
-  cursor: default;
-}
-.yems-news-grid .items.style3 > section.yems-embargo-card:hover {
-  transform: none;
-  box-shadow: 0 .85rem 2.1rem rgba(0,0,0,.16);
-  border-color: rgba(255,255,255,.06);
-}
-.yems-news-grid .items.style3 > section.yems-embargo-card:hover img {
-  transform: none;
-}
-.yems-embargo-card-content {
-  cursor: default;
-}
