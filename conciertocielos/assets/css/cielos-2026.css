@@ -11,3 +11,8 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}body{background:var(--cc-dee
 
 /* Planet-red accent from the 2026 poster; graphite backgrounds. */
 .cc-button{background:transparent;color:var(--cc-highlight)!important;border-color:var(--cc-highlight)}.cc-button:hover{background:var(--cc-highlight);color:#171717!important}.cc-kicker{color:var(--cc-highlight)}.cc-anniversary strong{font-weight:600}.cc-date time{color:var(--cc-highlight)}.cc-credits dt{color:var(--cc-highlight)}
+
+.cc-instagram{display:inline-flex;align-items:center;gap:.65rem;flex-wrap:wrap;margin-top:1.5rem;padding:.6rem .9rem;border:1px solid rgba(240,91,104,.55);border-radius:5px;text-decoration:none;font-size:.88rem;color:var(--cc-highlight)}.cc-instagram .fa-instagram{font-size:1.25rem}.cc-instagram-handle{color:#cececb;font-size:.78rem}.cc-works-intro{background:#202020}.cc-works-intro p{max-width:850px;margin-bottom:0}.cc-works-intro a{color:var(--cc-highlight)}
+
+/* Preserve the full composition of the newly supplied concert photographs. */
+#galeria .cc-gallery-recent>.image img{object-fit:contain;background:#171717}
