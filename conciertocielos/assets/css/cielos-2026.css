@@ -16,3 +16,6 @@ html{scroll-behavior:smooth;scroll-padding-top:90px}body{background:var(--cc-dee
 
 /* Preserve the full composition of the newly supplied concert photographs. */
 #galeria .cc-gallery-recent>.image img{object-fit:contain;background:#171717}
+
+/* Four institutional marks in one desktop row; YEMS followed by MinCiencia + ANID. */
+.cc-partners{grid-template-columns:1.35fr 1.1fr .85fr .7fr;gap:2rem;max-width:1200px;padding:1rem 3rem 3rem}.cc-partners a{min-height:95px}.cc-partners a img,.cc-partners a:nth-child(2) img,.cc-partners a:nth-child(3) img{width:100%;max-width:270px;height:95px}.cc-partners .cc-partner-anid img{max-width:140px;height:76px}@media(max-width:650px){.cc-partners{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;padding:1rem 1.5rem 2.5rem}.cc-partners a{min-height:80px}.cc-partners a img,.cc-partners a:nth-child(2) img,.cc-partners a:nth-child(3) img{height:80px}.cc-partners .cc-partner-anid img{height:65px;max-width:120px}}
